@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'rxjs-codecamp';
+  public readonly searchString = new FormControl('jeejee');
+
+  public constructor() {
+    this.searchString.valueChanges
+      .pipe(
+        // TODO: Use debounce, distinct and filter operators
+      )
+      .subscribe(value => {
+        console.log(value);
+      });
+  }
+
+  public click() {
+    // TODO: Do something
+  }
 }
